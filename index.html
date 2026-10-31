@@ -10,27 +10,40 @@
     body { font-family: 'Tajawal', sans-serif; }
     @keyframes pulse-ring {
       0% { box-shadow: 0 0 0 0 rgba(234, 179, 8, 0.8); transform: scale(1); }
-      70% { box-shadow: 0 0 0 14px rgba(234, 179, 8, 0); transform: scale(1.1); }
+      70% { box-shadow: 0 0 0 10px rgba(234, 179, 8, 0); transform: scale(1.05); }
       100% { box-shadow: 0 0 0 0 rgba(234, 179, 8, 0); transform: scale(1); }
     }
     .hotspot-pin { animation: pulse-ring 2s infinite; }
+
+    /* تصغير إجباري وصارم للدبابيس خصيصاً للجوال لكي لا تغطي الصورة */
+    @media (max-width: 768px) {
+      .hotspot-btn {
+        padding: 2px 6px !important;
+        font-size: 8px !important;
+        border-width: 1px !important;
+        white-space: nowrap !important;
+      }
+      .hotspot-btn span {
+        font-size: 9px !important;
+      }
+    }
   </style>
 </head>
-<body class="bg-slate-900 text-slate-100 min-h-screen p-4 md:p-8">
+<body class="bg-slate-900 text-slate-100 min-h-screen p-3 md:p-8">
 
   <div class="max-w-4xl mx-auto">
     <!-- الهيدر -->
     <header class="text-center mb-6">
-      <h1 class="text-3xl font-black text-white mt-2 mb-1">معايير امتثال وحدات الضيافة</h1>
-      <p class="text-slate-400 text-sm">اختر نوع الوحدة (شقة أو فلة) للاطلاع على الاشتراطات التفاعلية الرسمية</p>
+      <h1 class="text-2xl md:text-3xl font-black text-white mt-2 mb-1">معايير امتثال وحدات الضيافة</h1>
+      <p class="text-slate-400 text-xs md:text-sm">اختر نوع الوحدة (شقة أو فلة) للاطلاع على الاشتراطات التفاعلية الرسمية</p>
     </header>
 
     <!-- أزرار التبديل بين الأقسام -->
-    <div class="flex justify-center gap-4 mb-6">
-      <button onclick="switchCategory('apartment')" id="btnApt" class="px-6 py-2.5 rounded-2xl font-black text-sm transition cursor-pointer bg-amber-500 text-slate-950 shadow-lg">
+    <div class="flex justify-center gap-3 mb-6">
+      <button onclick="switchCategory('apartment')" id="btnApt" class="px-5 py-2 rounded-2xl font-black text-xs md:text-sm transition cursor-pointer bg-amber-500 text-slate-950 shadow-lg">
         🏢 قسم الشقة
       </button>
-      <button onclick="switchCategory('villa')" id="btnVilla" class="px-6 py-2.5 rounded-2xl font-black text-sm transition cursor-pointer bg-slate-800 text-slate-300 border border-slate-700 hover:bg-slate-700">
+      <button onclick="switchCategory('villa')" id="btnVilla" class="px-5 py-2 rounded-2xl font-black text-xs md:text-sm transition cursor-pointer bg-slate-800 text-slate-300 border border-slate-700 hover:bg-slate-700">
         🏡 قسم الفلة
       </button>
     </div>
@@ -41,38 +54,38 @@
 
       <!-- زر غرفة النوم -->
       <button onclick="openModal('🛏️ معايير غرف النوم (الشقة)', apartmentData.bedroom)" 
-              class="hotspot-pin absolute top-[57%] left-[63%] -translate-x-1/2 -translate-y-1/2 bg-amber-500 hover:bg-amber-400 text-slate-950 font-black px-4 py-2 rounded-full border-2 border-white shadow-2xl transition flex items-center gap-1.5 text-xs md:text-sm cursor-pointer" style="z-index: 50;">
+              class="hotspot-pin hotspot-btn absolute top-[57%] left-[63%] -translate-x-1/2 -translate-y-1/2 bg-amber-500 hover:bg-amber-400 text-slate-950 font-black px-3.5 py-1.5 rounded-full border-2 border-white shadow-2xl transition flex items-center gap-1 text-xs cursor-pointer" style="z-index: 50;">
         <span>🛏️</span><span class="font-bold">غرفة النوم</span>
       </button>
 
       <!-- زر دورة المياه -->
       <button onclick="openModal('🚿 معايير دورات المياه (الشقة)', apartmentData.bathroom)" 
-              class="hotspot-pin absolute top-[50%] left-[32%] -translate-x-1/2 -translate-y-1/2 bg-amber-500 hover:bg-amber-400 text-slate-950 font-black px-4 py-2 rounded-full border-2 border-white shadow-2xl transition flex items-center gap-1.5 text-xs md:text-sm cursor-pointer" style="z-index: 50;">
+              class="hotspot-pin hotspot-btn absolute top-[50%] left-[32%] -translate-x-1/2 -translate-y-1/2 bg-amber-500 hover:bg-amber-400 text-slate-950 font-black px-3.5 py-1.5 rounded-full border-2 border-white shadow-2xl transition flex items-center gap-1 text-xs cursor-pointer" style="z-index: 50;">
         <span>🚿</span><span class="font-bold">دورة المياه</span>
       </button>
 
       <!-- زر المطبخ -->
       <button onclick="openModal('🍳 معايير تجهيزات المطبخ (الشقة)', apartmentData.kitchen)" 
-              class="hotspot-pin absolute top-[36%] left-[48%] -translate-x-1/2 -translate-y-1/2 bg-amber-500 hover:bg-amber-400 text-slate-950 font-black px-4 py-2 rounded-full border-2 border-white shadow-2xl transition flex items-center gap-1.5 text-xs md:text-sm cursor-pointer" style="z-index: 50;">
+              class="hotspot-pin hotspot-btn absolute top-[36%] left-[48%] -translate-x-1/2 -translate-y-1/2 bg-amber-500 hover:bg-amber-400 text-slate-950 font-black px-3.5 py-1.5 rounded-full border-2 border-white shadow-2xl transition flex items-center gap-1 text-xs cursor-pointer" style="z-index: 50;">
         <span>🍳</span><span class="font-bold">المطبخ والتحضير</span>
       </button>
 
       <!-- زر غرفة المعيشة -->
       <button onclick="openModal('🛋️ معايير غرفة المعيشة (الشقة)', apartmentData.living)" 
-              class="hotspot-pin absolute top-[70%] left-[53%] -translate-x-1/2 -translate-y-1/2 bg-amber-500 hover:bg-amber-400 text-slate-950 font-black px-4 py-2 rounded-full border-2 border-white shadow-2xl transition flex items-center gap-1.5 text-xs md:text-sm cursor-pointer" style="z-index: 50;">
+              class="hotspot-pin hotspot-btn absolute top-[70%] left-[53%] -translate-x-1/2 -translate-y-1/2 bg-amber-500 hover:bg-amber-400 text-slate-950 font-black px-3.5 py-1.5 rounded-full border-2 border-white shadow-2xl transition flex items-center gap-1 text-xs cursor-pointer" style="z-index: 50;">
         <span>🛋️</span><span class="font-bold">غرفة المعيشة</span>
       </button>
     </div>
 
     <!-- قائمة المعايير السريعة للشقة -->
     <div id="apartmentGeneralMenu" class="grid grid-cols-1 md:grid-cols-3 gap-3 mb-8" style="display: grid;">
-      <button onclick="openModal('🚨 معايير السلامة والتجهيزات (الشقة)', apartmentData.safety)" class="bg-slate-800 hover:bg-slate-700 border border-slate-700 p-3.5 rounded-2xl flex items-center justify-center gap-2 font-bold text-amber-400 text-sm transition cursor-pointer">
+      <button onclick="openModal('🚨 معايير السلامة والتجهيزات (الشقة)', apartmentData.safety)" class="bg-slate-800 hover:bg-slate-700 border border-slate-700 p-3 rounded-2xl flex items-center justify-center gap-2 font-bold text-amber-400 text-xs md:text-sm transition cursor-pointer">
         🚨 اشتراطات السلامة
       </button>
-      <button onclick="openModal('📋 المعايير العامة والخدمات (الشقة)', apartmentData.general)" class="bg-slate-800 hover:bg-slate-700 border border-slate-700 p-3.5 rounded-2xl flex items-center justify-center gap-2 font-bold text-amber-400 text-sm transition cursor-pointer">
+      <button onclick="openModal('📋 المعايير العامة والخدمات (الشقة)', apartmentData.general)" class="bg-slate-800 hover:bg-slate-700 border border-slate-700 p-3 rounded-2xl flex items-center justify-center gap-2 font-bold text-amber-400 text-xs md:text-sm transition cursor-pointer">
         📋 المعايير العامة والخدمات
       </button>
-      <button onclick="openModal('🏊‍♂️ معايير المسابح (الشقة - إن وجدت)', apartmentData.pool)" class="bg-slate-800 hover:bg-slate-700 border border-slate-700 p-3.5 rounded-2xl flex items-center justify-center gap-2 font-bold text-amber-400 text-sm transition cursor-pointer">
+      <button onclick="openModal('🏊‍♂️ معايير المسابح (الشقة - إن وجدت)', apartmentData.pool)" class="bg-slate-800 hover:bg-slate-700 border border-slate-700 p-3 rounded-2xl flex items-center justify-center gap-2 font-bold text-amber-400 text-xs md:text-sm transition cursor-pointer">
         🏊‍♂️ اشتراطات المسابح (إن وجدت)
       </button>
     </div>
@@ -83,47 +96,47 @@
 
       <!-- زر دورة المياه -->
       <button onclick="openModal('🚿 معايير دورات المياه (الفلة)', villaData.bathroom)" 
-              class="hotspot-pin absolute top-[44%] left-[17%] -translate-x-1/2 -translate-y-1/2 bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black px-3.5 py-1.5 rounded-full border-2 border-white shadow-2xl transition flex items-center gap-1.5 text-xs cursor-pointer" style="z-index: 50;">
+              class="hotspot-pin hotspot-btn absolute top-[44%] left-[17%] -translate-x-1/2 -translate-y-1/2 bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black px-3 py-1 rounded-full border-2 border-white shadow-2xl transition flex items-center gap-1 text-[10px] md:text-xs cursor-pointer" style="z-index: 50;">
         <span>🚿</span><span class="font-bold">دورة المياه</span>
       </button>
 
-      <!-- زر غرفة النوم (تم ضبط مكانه في منتصف المنطقة المحددة بالأحمر) -->
+      <!-- زر غرفة النوم -->
       <button onclick="openModal('🛏️ معايير غرف النوم (الفلة)', villaData.bedroom)" 
-              class="hotspot-pin absolute top-[30%] left-[34%] -translate-x-1/2 -translate-y-1/2 bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black px-3.5 py-1.5 rounded-full border-2 border-white shadow-2xl transition flex items-center gap-1.5 text-xs cursor-pointer" style="z-index: 50;">
+              class="hotspot-pin hotspot-btn absolute top-[30%] left-[34%] -translate-x-1/2 -translate-y-1/2 bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black px-3 py-1 rounded-full border-2 border-white shadow-2xl transition flex items-center gap-1 text-[10px] md:text-xs cursor-pointer" style="z-index: 50;">
         <span>🛏️</span><span class="font-bold">غرفة النوم</span>
       </button>
 
       <!-- زر غرفة المعيشة -->
       <button onclick="openModal('🛋️ معايير غرفة المعيشة والضيافة (الفلة)', villaData.living)" 
-              class="hotspot-pin absolute top-[53%] left-[43%] -translate-x-1/2 -translate-y-1/2 bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black px-3.5 py-1.5 rounded-full border-2 border-white shadow-2xl transition flex items-center gap-1.5 text-xs cursor-pointer" style="z-index: 50;">
+              class="hotspot-pin hotspot-btn absolute top-[53%] left-[43%] -translate-x-1/2 -translate-y-1/2 bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black px-3 py-1 rounded-full border-2 border-white shadow-2xl transition flex items-center gap-1 text-[10px] md:text-xs cursor-pointer" style="z-index: 50;">
         <span>🛋️</span><span class="font-bold">غرفة المعيشة</span>
       </button>
 
       <!-- زر المطبخ -->
       <button onclick="openModal('🍳 معايير تجهيزات المطبخ (الفلة)', villaData.kitchen)" 
-              class="hotspot-pin absolute top-[58%] left-[27%] -translate-x-1/2 -translate-y-1/2 bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black px-3.5 py-1.5 rounded-full border-2 border-white shadow-2xl transition flex items-center gap-1.5 text-xs cursor-pointer" style="z-index: 50;">
+              class="hotspot-pin hotspot-btn absolute top-[58%] left-[27%] -translate-x-1/2 -translate-y-1/2 bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black px-3 py-1 rounded-full border-2 border-white shadow-2xl transition flex items-center gap-1 text-[10px] md:text-xs cursor-pointer" style="z-index: 50;">
         <span>🍳</span><span class="font-bold">المطبخ</span>
       </button>
 
       <!-- زر المسبح والإنقاذ -->
       <button onclick="openModal('🏊‍♂️ معايير المسابح (الفلة)', villaData.pool)" 
-              class="hotspot-pin absolute top-[44%] left-[64%] -translate-x-1/2 -translate-y-1/2 bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black px-3.5 py-1.5 rounded-full border-2 border-white shadow-2xl transition flex items-center gap-1.5 text-xs cursor-pointer" style="z-index: 50;">
+              class="hotspot-pin hotspot-btn absolute top-[44%] left-[64%] -translate-x-1/2 -translate-y-1/2 bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black px-3 py-1 rounded-full border-2 border-white shadow-2xl transition flex items-center gap-1 text-[10px] md:text-xs cursor-pointer" style="z-index: 50;">
         <span>🏊‍♂️</span><span class="font-bold">المسبح والإنقاذ</span>
       </button>
 
       <!-- زر الحديقة والجلسات -->
       <button onclick="openModal('🏡 معايير الحدائق والمساحات الخارجية (الفلة)', villaData.garden)" 
-              class="hotspot-pin absolute top-[74%] left-[65%] -translate-x-1/2 -translate-y-1/2 bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black px-3.5 py-1.5 rounded-full border-2 border-white shadow-2xl transition flex items-center gap-1.5 text-xs cursor-pointer" style="z-index: 50;">
+              class="hotspot-pin hotspot-btn absolute top-[74%] left-[65%] -translate-x-1/2 -translate-y-1/2 bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black px-3 py-1 rounded-full border-2 border-white shadow-2xl transition flex items-center gap-1 text-[10px] md:text-xs cursor-pointer" style="z-index: 50;">
         <span>🏡</span><span class="font-bold">الحديقة والجلسات</span>
       </button>
     </div>
 
     <!-- قائمة المعايير السريعة للفلة -->
-    <div id="villaGeneralMenu" class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8" style="display: none;">
-      <button onclick="openModal('🚨 معايير السلامة والتجهيزات (الفلة)', villaData.safety)" class="bg-slate-800 hover:bg-slate-700 border border-slate-700 p-4 rounded-2xl flex items-center justify-center gap-2 font-bold text-emerald-400 text-sm transition cursor-pointer">
+    <div id="villaGeneralMenu" class="grid grid-cols-1 md:grid-cols-2 gap-3 mb-8" style="display: none;">
+      <button onclick="openModal('🚨 معايير السلامة والتجهيزات (الفلة)', villaData.safety)" class="bg-slate-800 hover:bg-slate-700 border border-slate-700 p-3.5 rounded-2xl flex items-center justify-center gap-2 font-bold text-emerald-400 text-xs md:text-sm transition cursor-pointer">
         🚨 اشتراطات السلامة
       </button>
-      <button onclick="openModal('📋 المعايير العامة والخدمات (الفلة)', villaData.general)" class="bg-slate-800 hover:bg-slate-700 border border-slate-700 p-4 rounded-2xl flex items-center justify-center gap-2 font-bold text-emerald-400 text-sm transition cursor-pointer">
+      <button onclick="openModal('📋 المعايير العامة والخدمات (الفلة)', villaData.general)" class="bg-slate-800 hover:bg-slate-700 border border-slate-700 p-3.5 rounded-2xl flex items-center justify-center gap-2 font-bold text-emerald-400 text-xs md:text-sm transition cursor-pointer">
         📋 المعايير العامة والخدمات
       </button>
     </div>
@@ -131,10 +144,10 @@
 
   <!-- النافذة المنبثقة Modal -->
   <div id="modal" class="fixed inset-0 bg-slate-900/80 backdrop-blur-sm items-center justify-center p-4 z-50" style="display: none;">
-    <div class="bg-slate-800 border border-slate-700 rounded-3xl p-6 max-w-2xl w-full shadow-2xl relative">
-      <h3 id="modalTitle" class="text-xl md:text-2xl font-black text-amber-400 mb-4 border-b border-slate-700 pb-3"></h3>
-      <ul id="modalList" class="space-y-3 text-slate-200 text-sm mb-6 max-h-[60vh] overflow-y-auto pr-1"></ul>
-      <button onclick="closeModal()" class="w-full bg-amber-500 hover:bg-amber-600 text-slate-950 text-base py-3 rounded-2xl font-black transition cursor-pointer">
+    <div class="bg-slate-800 border border-slate-700 rounded-3xl p-5 max-w-2xl w-full shadow-2xl relative">
+      <h3 id="modalTitle" class="text-lg md:text-xl font-black text-amber-400 mb-3 border-b border-slate-700 pb-2"></h3>
+      <ul id="modalList" class="space-y-2.5 text-slate-200 text-xs md:text-sm mb-5 max-h-[60vh] overflow-y-auto pr-1"></ul>
+      <button onclick="closeModal()" class="w-full bg-amber-500 hover:bg-amber-600 text-slate-950 text-sm md:text-base py-2.5 rounded-2xl font-black transition cursor-pointer">
         تم الاطلاع وإغلاق
       </button>
     </div>
@@ -152,7 +165,7 @@
       "توفير إضاءة كافية وموزعة بشكل مناسب في المدخل الرئيسي والممرات والسلالم لضمان وضوح الرؤية وسلامة الحركة، تعمل بكفاءة طوال فترة الإقامة. ويشترط أن تكون وحدات الإضاءة سليمة ومطابقة لاشتراطات السلامة الكهربائية.",
       "توفير موقف مخصص لسيارة واحدة على الأقل، متاحاً للضيف طوال مدة إقامتهم. ويشترط أن يكون الموقف بمساحة كافية وواضح التحديد وآمناً وسهل الوصول إليه كموقف للوحدة.",
       "توفير مصعد بالمبنى يعمل بكفاءة يخدم جميع الطوابق ابتداءً من الطابق الأرضي، وذلك إذا كان المبنى يتكون من ثلاثة طوابق أو أكثر. ويشترط أن يكون المصعد مطابقاً لاشتراطات السلامة المعتمدة، وحاصلاً على شهادة فحص سارية من الجهات المختصة، ومزوداً بأنظمة الإنذار والإضاءة الاحتياطية وزر الطوارئ.",
-      "الأطعمة والمشروبات - إن وجدت -: في حال توفير أطعمة ومشروبات للضيف، على سبيل المثال العصائر والوجبات الخفيفة، يجب أن تكون سارية الصلاحية وبحالة جيدة وصالحة للاستهلاك الآدمي. ويشترط أن تكون جميع المنتجات محفوظة بطريقة سليمة وفي درجة الحرارة المناسبة، ومطابقة لاشتراطات السلامة الغذائية المعتمدة، مع وضوح تاريخ الإنتاج والانتهاء على العبوات."
+      "الأطعمة والمشروبات - إن وجدت -: في حال توفير أطعمة ومشروبات للضيف، على سبيل المثال العصائر والوجبات الخفيفة، يجب أن تكون سارية الصلاحية وبحالة جيدة وصالحة للاستخدام الآدمي. ويشترط أن تكون جميع المنتجات محفوظة بطريقة سليمة وفي درجة الحرارة المناسبة، ومطابقة لاشتراطات السلامة الغذائية المعتمدة، مع وضوح تاريخ الإنتاج والانتهاء على العبوات."
     ];
 
     const apartmentData = {
@@ -172,7 +185,7 @@
         "توفير دورة مياه مستقلة داخل الوحدة، مجهزة بالأدوات الصحية الأساسية وتعمل بكفاءة وبحالة جيدة، نظيفة وصالحة للاستخدام.",
         "توفير مقعد مرحاض بغطاء وشطاف يدوي بجانبه لكل دورة مياه رئيسية، يعملان بكفاءة وبحالة جيدة، ونظيفان وصالحان للاستخدام دون كسور أو تسرب.",
         "توفير منطقة استحمام أو حوض استحمام مزود بدش وباب زجاجي، يعمل بكفاءة وبحالة جيدة، ونظيف وصالح للاستخدام دون كسور أو تسرب، مع أرضية أو سطح مانع للانزلاق.",
-        "توفير حوض لغسل اليدين لكل دورة، مجهز بصنابير للمياه الساخنة والباردة ومزود بمرآة، تعمل بكفاءة وبحيدة، ونظيفة وصالحة للاستخدام دون كسور أو تسرب.",
+        "توفير حوض لغسل اليدين لكل دورة، مجهز بصنابير للمياه الساخنة والباردة ومزود بمرآة، تعمل بكفاءة وبحالة جيدة، ونظيفة وصالحة للاستخدام دون كسور أو تسرب.",
         "تجهيز دورة المياه بمنتجات النظافة الشخصية، تشمل صابون اليدين، وصابون الجسم، والشامبو كحد أدنى، وتكون جديدة أو معبأة بالكامل ونظيفة.",
         "توفير حامل مناشف لكل دورة مياه، يكون مثبتاً بإحكام وبحالة جيدة ونظيفاً وصالحاً للاستخدام.",
         "توفير سجادة (Bath Rug) لكل دورة مياه، تكون مانعة للانزلاق وبحالة جيدة، نظيفة وخالية من البقع والروائح، مستبدلة بين الضيوف.",
@@ -262,15 +275,15 @@
         aptMenu.style.display = 'grid';
         villaSec.style.display = 'none';
         villaMenu.style.display = 'none';
-        btnApt.className = "px-6 py-2.5 rounded-2xl font-black text-sm transition cursor-pointer bg-amber-500 text-slate-950 shadow-lg";
-        btnVilla.className = "px-6 py-2.5 rounded-2xl font-black text-sm transition cursor-pointer bg-slate-800 text-slate-300 border border-slate-700 hover:bg-slate-700";
+        btnApt.className = "px-5 py-2 rounded-2xl font-black text-xs md:text-sm transition cursor-pointer bg-amber-500 text-slate-950 shadow-lg";
+        btnVilla.className = "px-5 py-2 rounded-2xl font-black text-xs md:text-sm transition cursor-pointer bg-slate-800 text-slate-300 border border-slate-700 hover:bg-slate-700";
       } else {
         villaSec.style.display = 'block';
         villaMenu.style.display = 'grid';
         aptSec.style.display = 'none';
         aptMenu.style.display = 'none';
-        btnVilla.className = "px-6 py-2.5 rounded-2xl font-black text-sm transition cursor-pointer bg-emerald-500 text-slate-950 shadow-lg";
-        btnApt.className = "px-6 py-2.5 rounded-2xl font-black text-sm transition cursor-pointer bg-slate-800 text-slate-300 border border-slate-700 hover:bg-slate-700";
+        btnVilla.className = "px-5 py-2 rounded-2xl font-black text-xs md:text-sm transition cursor-pointer bg-emerald-500 text-slate-950 shadow-lg";
+        btnApt.className = "px-5 py-2 rounded-2xl font-black text-xs md:text-sm transition cursor-pointer bg-slate-800 text-slate-300 border border-slate-700 hover:bg-slate-700";
       }
     }
 
@@ -280,7 +293,7 @@
       listContainer.innerHTML = '';
       items.forEach((item, index) => {
         const li = document.createElement('li');
-        li.className = 'flex items-start gap-3 bg-slate-900/70 p-3.5 rounded-xl border border-slate-700/50';
+        li.className = 'flex items-start gap-2.5 bg-slate-900/70 p-3 rounded-xl border border-slate-700/50';
         li.innerHTML = `<span class="text-amber-400 font-black mt-0.5">${index + 1}.</span> <span class="leading-relaxed text-slate-200">${item}</span>`;
         listContainer.appendChild(li);
       });
