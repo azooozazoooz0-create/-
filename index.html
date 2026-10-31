@@ -10,10 +10,21 @@
     body { font-family: 'Tajawal', sans-serif; }
     @keyframes pulse-ring {
       0% { box-shadow: 0 0 0 0 rgba(234, 179, 8, 0.8); transform: scale(1); }
-      70% { box-shadow: 0 0 0 8px rgba(234, 179, 8, 0); transform: scale(1.03); }
+      70% { box-shadow: 0 0 0 6px rgba(234, 179, 8, 0); transform: scale(1.02); }
       100% { box-shadow: 0 0 0 0 rgba(234, 179, 8, 0); transform: scale(1); }
     }
     .hotspot-pin { animation: pulse-ring 2s infinite; }
+
+    /* تحكّم صارم وثابت بحجم الدبابيس لتكون صغيرة جداً ومناسبه على الجوال واللابتوب */
+    .custom-pin {
+      padding: 3px 8px !important;
+      font-size: 11px !important;
+      border-radius: 9999px !important;
+      white-space: nowrap !important;
+    }
+    .custom-pin span {
+      font-size: 11px !important;
+    }
   </style>
 </head>
 <body class="bg-slate-900 text-slate-100 min-h-screen p-2 md:p-8">
@@ -27,10 +38,10 @@
 
     <!-- أزرار التبديل بين الأقسام -->
     <div class="flex justify-center gap-3 mb-4 md:mb-6">
-      <button onclick="switchCategory('apartment')" id="btnApt" class="px-4 py-1.5 md:px-6 md:py-2.5 rounded-xl md:rounded-2xl font-black text-xs md:text-sm transition cursor-pointer bg-amber-500 text-slate-950 shadow-lg">
+      <button onclick="switchCategory('apartment')" id="btnApt" class="px-4 py-1.5 md:px-6 md:py-2.5 rounded-xl font-black text-xs md:text-sm transition cursor-pointer bg-amber-500 text-slate-950 shadow-lg">
         🏢 قسم الشقة
       </button>
-      <button onclick="switchCategory('villa')" id="btnVilla" class="px-4 py-1.5 md:px-6 md:py-2.5 rounded-xl md:rounded-2xl font-black text-xs md:text-sm transition cursor-pointer bg-slate-800 text-slate-300 border border-slate-700 hover:bg-slate-700">
+      <button onclick="switchCategory('villa')" id="btnVilla" class="px-4 py-1.5 md:px-6 md:py-2.5 rounded-xl font-black text-xs md:text-sm transition cursor-pointer bg-slate-800 text-slate-300 border border-slate-700 hover:bg-slate-700">
         🏡 قسم الفلة
       </button>
     </div>
@@ -41,38 +52,38 @@
 
       <!-- زر غرفة النوم -->
       <button onclick="openModal('🛏️ معايير غرف النوم (الشقة)', apartmentData.bedroom)" 
-              class="hotspot-pin absolute top-[57%] left-[63%] -translate-x-1/2 -translate-y-1/2 bg-amber-500 hover:bg-amber-400 text-slate-950 font-black px-2 py-0.5 md:px-4 md:py-2 rounded-full border border-white md:border-2 shadow-xl transition flex items-center gap-1 text-[10px] md:text-sm cursor-pointer" style="z-index: 50;">
+              class="hotspot-pin custom-pin absolute top-[57%] left-[63%] -translate-x-1/2 -translate-y-1/2 bg-amber-500 hover:bg-amber-400 text-slate-950 font-black border border-white shadow-xl transition flex items-center gap-1 cursor-pointer" style="z-index: 50;">
         <span>🛏️</span><span class="font-bold">غرفة النوم</span>
       </button>
 
       <!-- زر دورة المياه -->
       <button onclick="openModal('🚿 معايير دورات المياه (الشقة)', apartmentData.bathroom)" 
-              class="hotspot-pin absolute top-[50%] left-[32%] -translate-x-1/2 -translate-y-1/2 bg-amber-500 hover:bg-amber-400 text-slate-950 font-black px-2 py-0.5 md:px-4 md:py-2 rounded-full border border-white md:border-2 shadow-xl transition flex items-center gap-1 text-[10px] md:text-sm cursor-pointer" style="z-index: 50;">
+              class="hotspot-pin custom-pin absolute top-[50%] left-[32%] -translate-x-1/2 -translate-y-1/2 bg-amber-500 hover:bg-amber-400 text-slate-950 font-black border border-white shadow-xl transition flex items-center gap-1 cursor-pointer" style="z-index: 50;">
         <span>🚿</span><span class="font-bold">دورة المياه</span>
       </button>
 
       <!-- زر المطبخ -->
       <button onclick="openModal('🍳 معايير تجهيزات المطبخ (الشقة)', apartmentData.kitchen)" 
-              class="hotspot-pin absolute top-[36%] left-[48%] -translate-x-1/2 -translate-y-1/2 bg-amber-500 hover:bg-amber-400 text-slate-950 font-black px-2 py-0.5 md:px-4 md:py-2 rounded-full border border-white md:border-2 shadow-xl transition flex items-center gap-1 text-[10px] md:text-sm cursor-pointer" style="z-index: 50;">
+              class="hotspot-pin custom-pin absolute top-[36%] left-[48%] -translate-x-1/2 -translate-y-1/2 bg-amber-500 hover:bg-amber-400 text-slate-950 font-black border border-white shadow-xl transition flex items-center gap-1 cursor-pointer" style="z-index: 50;">
         <span>🍳</span><span class="font-bold">المطبخ والتحضير</span>
       </button>
 
       <!-- زر غرفة المعيشة -->
       <button onclick="openModal('🛋️ معايير غرفة المعيشة (الشقة)', apartmentData.living)" 
-              class="hotspot-pin absolute top-[70%] left-[53%] -translate-x-1/2 -translate-y-1/2 bg-amber-500 hover:bg-amber-400 text-slate-950 font-black px-2 py-0.5 md:px-4 md:py-2 rounded-full border border-white md:border-2 shadow-xl transition flex items-center gap-1 text-[10px] md:text-sm cursor-pointer" style="z-index: 50;">
+              class="hotspot-pin custom-pin absolute top-[70%] left-[53%] -translate-x-1/2 -translate-y-1/2 bg-amber-500 hover:bg-amber-400 text-slate-950 font-black border border-white shadow-xl transition flex items-center gap-1 cursor-pointer" style="z-index: 50;">
         <span>🛋️</span><span class="font-bold">غرفة المعيشة</span>
       </button>
     </div>
 
     <!-- قائمة المعايير السريعة للشقة -->
     <div id="apartmentGeneralMenu" class="grid grid-cols-1 md:grid-cols-3 gap-2.5 md:gap-3 mb-8" style="display: grid;">
-      <button onclick="openModal('🚨 معايير السلامة والتجهيزات (الشقة)', apartmentData.safety)" class="bg-slate-800 hover:bg-slate-700 border border-slate-700 p-2.5 md:p-3.5 rounded-xl md:rounded-2xl flex items-center justify-center gap-2 font-bold text-amber-400 text-xs md:text-sm transition cursor-pointer">
+      <button onclick="openModal('🚨 معايير السلامة والتجهيزات (الشقة)', apartmentData.safety)" class="bg-slate-800 hover:bg-slate-700 border border-slate-700 p-2.5 md:p-3.5 rounded-xl font-bold text-amber-400 text-xs md:text-sm transition cursor-pointer">
         🚨 اشتراطات السلامة
       </button>
-      <button onclick="openModal('📋 المعايير العامة والخدمات (الشقة)', apartmentData.general)" class="bg-slate-800 hover:bg-slate-700 border border-slate-700 p-2.5 md:p-3.5 rounded-xl md:rounded-2xl flex items-center justify-center gap-2 font-bold text-amber-400 text-xs md:text-sm transition cursor-pointer">
+      <button onclick="openModal('📋 المعايير العامة والخدمات (الشقة)', apartmentData.general)" class="bg-slate-800 hover:bg-slate-700 border border-slate-700 p-2.5 md:p-3.5 rounded-xl font-bold text-amber-400 text-xs md:text-sm transition cursor-pointer">
         📋 المعايير العامة والخدمات
       </button>
-      <button onclick="openModal('🏊‍♂️ معايير المسابح (الشقة - إن وجدت)', apartmentData.pool)" class="bg-slate-800 hover:bg-slate-700 border border-slate-700 p-2.5 md:p-3.5 rounded-xl md:rounded-2xl flex items-center justify-center gap-2 font-bold text-amber-400 text-xs md:text-sm transition cursor-pointer">
+      <button onclick="openModal('🏊‍♂️ معايير المسابح (الشقة - إن وجدت)', apartmentData.pool)" class="bg-slate-800 hover:bg-slate-700 border border-slate-700 p-2.5 md:p-3.5 rounded-xl font-bold text-amber-400 text-xs md:text-sm transition cursor-pointer">
         🏊‍♂️ اشتراطات المسابح (إن وجدت)
       </button>
     </div>
@@ -83,47 +94,47 @@
 
       <!-- زر دورة المياه -->
       <button onclick="openModal('🚿 معايير دورات المياه (الفلة)', villaData.bathroom)" 
-              class="hotspot-pin absolute top-[44%] left-[17%] -translate-x-1/2 -translate-y-1/2 bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black px-1.5 py-0.5 md:px-3.5 md:py-1.5 rounded-full border border-white md:border-2 shadow-xl transition flex items-center gap-0.5 md:gap-1 text-[9px] md:text-xs cursor-pointer" style="z-index: 50;">
+              class="hotspot-pin custom-pin absolute top-[44%] left-[17%] -translate-x-1/2 -translate-y-1/2 bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black border border-white shadow-xl transition flex items-center gap-1 cursor-pointer" style="z-index: 50;">
         <span>🚿</span><span class="font-bold">دورة المياه</span>
       </button>
 
       <!-- زر غرفة النوم -->
       <button onclick="openModal('🛏️ معايير غرف النوم (الفلة)', villaData.bedroom)" 
-              class="hotspot-pin absolute top-[30%] left-[34%] -translate-x-1/2 -translate-y-1/2 bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black px-1.5 py-0.5 md:px-3.5 md:py-1.5 rounded-full border border-white md:border-2 shadow-xl transition flex items-center gap-0.5 md:gap-1 text-[9px] md:text-xs cursor-pointer" style="z-index: 50;">
+              class="hotspot-pin custom-pin absolute top-[30%] left-[34%] -translate-x-1/2 -translate-y-1/2 bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black border border-white shadow-xl transition flex items-center gap-1 cursor-pointer" style="z-index: 50;">
         <span>🛏️</span><span class="font-bold">غرفة النوم</span>
       </button>
 
       <!-- زر غرفة المعيشة -->
       <button onclick="openModal('🛋️ معايير غرفة المعيشة والضيافة (الفلة)', villaData.living)" 
-              class="hotspot-pin absolute top-[53%] left-[43%] -translate-x-1/2 -translate-y-1/2 bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black px-1.5 py-0.5 md:px-3.5 md:py-1.5 rounded-full border border-white md:border-2 shadow-xl transition flex items-center gap-0.5 md:gap-1 text-[9px] md:text-xs cursor-pointer" style="z-index: 50;">
+              class="hotspot-pin custom-pin absolute top-[53%] left-[43%] -translate-x-1/2 -translate-y-1/2 bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black border border-white shadow-xl transition flex items-center gap-1 cursor-pointer" style="z-index: 50;">
         <span>🛋️</span><span class="font-bold">غرفة المعيشة</span>
       </button>
 
       <!-- زر المطبخ -->
       <button onclick="openModal('🍳 معايير تجهيزات المطبخ (الفلة)', villaData.kitchen)" 
-              class="hotspot-pin absolute top-[58%] left-[27%] -translate-x-1/2 -translate-y-1/2 bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black px-1.5 py-0.5 md:px-3.5 md:py-1.5 rounded-full border border-white md:border-2 shadow-xl transition flex items-center gap-0.5 md:gap-1 text-[9px] md:text-xs cursor-pointer" style="z-index: 50;">
+              class="hotspot-pin custom-pin absolute top-[58%] left-[27%] -translate-x-1/2 -translate-y-1/2 bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black border border-white shadow-xl transition flex items-center gap-1 cursor-pointer" style="z-index: 50;">
         <span>🍳</span><span class="font-bold">المطبخ</span>
       </button>
 
       <!-- زر المسبح والإنقاذ -->
       <button onclick="openModal('🏊‍♂️ معايير المسابح (الفلة)', villaData.pool)" 
-              class="hotspot-pin absolute top-[44%] left-[64%] -translate-x-1/2 -translate-y-1/2 bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black px-1.5 py-0.5 md:px-3.5 md:py-1.5 rounded-full border border-white md:border-2 shadow-xl transition flex items-center gap-0.5 md:gap-1 text-[9px] md:text-xs cursor-pointer" style="z-index: 50;">
+              class="hotspot-pin custom-pin absolute top-[44%] left-[64%] -translate-x-1/2 -translate-y-1/2 bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black border border-white shadow-xl transition flex items-center gap-1 cursor-pointer" style="z-index: 50;">
         <span>🏊‍♂️</span><span class="font-bold">المسبح والإنقاذ</span>
       </button>
 
       <!-- زر الحديقة والجلسات -->
       <button onclick="openModal('🏡 معايير الحدائق والمساحات الخارجية (الفلة)', villaData.garden)" 
-              class="hotspot-pin absolute top-[74%] left-[65%] -translate-x-1/2 -translate-y-1/2 bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black px-1.5 py-0.5 md:px-3.5 md:py-1.5 rounded-full border border-white md:border-2 shadow-xl transition flex items-center gap-0.5 md:gap-1 text-[9px] md:text-xs cursor-pointer" style="z-index: 50;">
+              class="hotspot-pin custom-pin absolute top-[74%] left-[65%] -translate-x-1/2 -translate-y-1/2 bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black border border-white shadow-xl transition flex items-center gap-1 cursor-pointer" style="z-index: 50;">
         <span>🏡</span><span class="font-bold">الحديقة والجلسات</span>
       </button>
     </div>
 
     <!-- قائمة المعايير السريعة للفلة -->
     <div id="villaGeneralMenu" class="grid grid-cols-1 md:grid-cols-2 gap-3 mb-8" style="display: none;">
-      <button onclick="openModal('🚨 معايير السلامة والتجهيزات (الفلة)', villaData.safety)" class="bg-slate-800 hover:bg-slate-700 border border-slate-700 p-3 md:p-4 rounded-xl md:rounded-2xl flex items-center justify-center gap-2 font-bold text-emerald-400 text-xs md:text-sm transition cursor-pointer">
+      <button onclick="openModal('🚨 معايير السلامة والتجهيزات (الفلة)', villaData.safety)" class="bg-slate-800 hover:bg-slate-700 border border-slate-700 p-3 md:p-4 rounded-xl font-bold text-emerald-400 text-xs md:text-sm transition cursor-pointer">
         🚨 اشتراطات السلامة
       </button>
-      <button onclick="openModal('📋 المعايير العامة والخدمات (الفلة)', villaData.general)" class="bg-slate-800 hover:bg-slate-700 border border-slate-700 p-3 md:p-4 rounded-xl md:rounded-2xl flex items-center justify-center gap-2 font-bold text-emerald-400 text-xs md:text-sm transition cursor-pointer">
+      <button onclick="openModal('📋 المعايير العامة والخدمات (الفلة)', villaData.general)" class="bg-slate-800 hover:bg-slate-700 border border-slate-700 p-3 md:p-4 rounded-xl font-bold text-emerald-400 text-xs md:text-sm transition cursor-pointer">
         📋 المعايير العامة والخدمات
       </button>
     </div>
@@ -287,6 +298,9 @@
       document.getElementById('modal').style.display = 'flex';
     }
 
+    completedcloseModal = () => {
+      document.getElementById('modal').style.display = 'none';
+    }
     function closeModal() {
       document.getElementById('modal').style.display = 'none';
     }
